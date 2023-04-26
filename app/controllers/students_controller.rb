@@ -16,17 +16,28 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      flash[:success] = "You have successfully signed up"
+      flash[:notice] = "You have successfully signed up"
       redirect_to students_path
     else
       render 'new'
     end
   end
 
+  def edit
+    @student = Student.find(params[:id])
+  end
 
   def update
-
+    @student = Student.find(params[:id])
+    if @student.update(student_params)
+      flash[:notice] = "You have successfully updated your profile"
+      #redirect_to student_path(@student)
+    redirect_to @student
+    else
+      render 'edit'
+    end
   end
+
   private
 
   def student_params

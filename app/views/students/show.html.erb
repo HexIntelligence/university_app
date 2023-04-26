@@ -5,9 +5,9 @@
         <span class="card-title">Name: <%= @student.name %> </span>
         <p>Email: <%= @student.email %> </p>
         <p>Course Enrolments: None</p>
-        <%= link_to '[ Edit your profile ]', edit_student_path, class: "text-info text-center" %>
         </div>
-
     </div>
+    <%= link_to '<i class="material-icons right">create</i> Edit your profile'.html_safe, edit_student_path(@student), class: "waves-effect waves-light btn" %>
+
   </div>
 </div>
